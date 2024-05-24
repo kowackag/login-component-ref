@@ -1,6 +1,7 @@
 import { RefObject, useRef, useState } from "react";
 import { RegisterPageTemplate } from "@/components/templates/RegisterPageTemplate";
 import { registerShema } from "./registerSchema";
+import { FormRef } from "@/components/organisms/RegisterForm";
 
 export type RegisterFieldsTypes = {
 	email: string;
@@ -14,14 +15,6 @@ export type RegisterFormType = {
 	};
 	formReference: RefObject<FormRef>;
 };
-
-export interface FormRef {
-	getFormData: () => {
-		email: string;
-		password: string;
-	};
-	resetForm: () => void;
-}
 
 function RegisterPage() {
 	const noErrorsState = {

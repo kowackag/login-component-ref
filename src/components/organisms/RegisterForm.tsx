@@ -1,9 +1,17 @@
-import { InputField } from "@/components/molecules/InputField";
-import { ConfirmButton } from "@/components/atoms/ConfirmButton";
-
 import { RefObject, forwardRef, useImperativeHandle, useRef } from "react";
+
+import { InputField } from "@/components/molecules/InputField";
+import { Button } from "@/components/atoms/Button";
+
 import { InputRef } from "@/utils/shared.types";
-import { FormRef } from "@/pages/RegisterPage/RegisterPage";
+
+export interface FormRef {
+	getFormData: () => {
+		email: string;
+		password: string;
+	};
+	resetForm: () => void;
+}
 
 export type RegisterFormType = {
 	onSubmit: React.FormEventHandler;
@@ -13,6 +21,7 @@ export type RegisterFormType = {
 	};
 	ref: RefObject<FormRef>;
 };
+
 export const RegisterForm = forwardRef(({ onSubmit, errors }: RegisterFormType, ref) => {
 	const emailInputRef = useRef<InputRef>(null);
 	const passwordInputRef = useRef<InputRef>(null);
@@ -42,7 +51,7 @@ export const RegisterForm = forwardRef(({ onSubmit, errors }: RegisterFormType, 
 				ref={passwordInputRef}
 				error={errors?.password}
 			/>
-			<ConfirmButton onSubmit={onSubmit}>Sign up</ConfirmButton>
+			<Button handleButton={onSubmit} text="Sign up" type="submit" />
 		</div>
 	);
 });

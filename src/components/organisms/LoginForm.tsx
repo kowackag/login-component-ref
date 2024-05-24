@@ -1,8 +1,8 @@
 import { InputField } from "@/components/molecules/InputField";
 import { Checkbox } from "@/components/molecules/Checkbox";
-import { ConfirmButton } from "@/components/atoms/ConfirmButton";
 
 import { LoginFormType } from "@/pages/LoginPage/LoginPage";
+import { Button } from "../atoms/Button";
 
 export const LoginForm = ({
 	onSubmit,
@@ -32,7 +32,7 @@ export const LoginForm = ({
 				label="Remember me?"
 				ref={saveCheckboxRef}
 			/>
-			<ConfirmButton onSubmit={onSubmit}>Login</ConfirmButton>
+			<Button handleButton={onSubmit} text="Login" type="submit"/>
 		</div>
 	);
 };
