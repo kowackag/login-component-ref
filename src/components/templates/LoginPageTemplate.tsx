@@ -4,8 +4,6 @@ import { LoginForm } from "@/components/organisms/LoginForm";
 import { SocialIconBox } from "@/components/molecules/SocialIconBox";
 import { LineDivider } from "@/components/molecules/LineDivider";
 import { Title } from "@/components/atoms/Title";
-import { AuthWrapper } from "@/components/atoms/AuthWrapper";
-import { AuthBackground } from "@/components/atoms/AuthBackground";
 
 import { LoginFormType } from "@/pages/LoginPage/LoginPage";
 
@@ -17,8 +15,8 @@ export const LoginPageTemplate = ({
 	saveCheckboxRef,
 }: LoginFormType) => {
 	return (
-		<AuthBackground>
-			<AuthWrapper>
+		<div className="flex min-h-screen w-full bg-navy-blue">
+			<section className="m-auto min-h-[556px] w-4/5 rounded-lg bg-white px-11 py-10 font-primaryRegular shadow-md-2 sm:w-96">
 				<Title>Login</Title>
 				<LoginForm
 					onSubmit={onSubmit}
@@ -38,7 +36,7 @@ export const LoginPageTemplate = ({
 						sign up
 					</Link>
 				</div>
-			</AuthWrapper>
-		</AuthBackground>
+			</section>
+		</div>
 	);
 };

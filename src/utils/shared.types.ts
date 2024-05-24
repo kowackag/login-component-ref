@@ -15,20 +15,11 @@ export type FormFieldTypes = {
 	name: string;
 	label: string;
 	type?: HTMLInputElement["type"];
-	// onChange: ChangeEventHandler;
-	// onBlur: FocusEventHandler<HTMLInputElement>;
 	ref: Ref<HTMLInputElement>;
 	error?: string;
 };
 
-export type CheckboxFieldTypes = {
-	name: string;
-	label: string;
-	// onChange: ChangeEventHandler;
-	// onBlur: FocusEventHandler<HTMLInputElement>;
-	ref: Ref<HTMLInputElement>;
-	error?: string;
-};
+
 
 export type FormDataType = {
 	email?: string;

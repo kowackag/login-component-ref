@@ -4,17 +4,15 @@ import { RegisterForm } from "@/components/organisms/RegisterForm";
 import { SocialIconBox } from "@/components/molecules/SocialIconBox";
 import { LineDivider } from "@/components/molecules/LineDivider";
 import { Title } from "@/components/atoms/Title";
-import { AuthWrapper } from "@/components/atoms/AuthWrapper";
-import { AuthBackground } from "@/components/atoms/AuthBackground";
 
-import { RegisterFormType } from "@/pages/RegisterPage";
+import { RegisterFormType } from "@/pages/RegisterPage/RegisterPage";
 
-export const RegisterPageTemplate = ({ onSubmit, register, errors }: RegisterFormType) => {
+export const RegisterPageTemplate = ({ onSubmit, errors, formReference }: RegisterFormType) => {
 	return (
-		<AuthBackground>
-			<AuthWrapper>
+		<div className="flex min-h-screen w-full bg-navy-blue">
+			<section className="m-auto min-h-[556px] w-4/5 rounded-lg bg-white px-11 py-10 font-primaryRegular shadow-md-2 sm:w-96">
 				<Title>Sign up</Title>
-				<RegisterForm onSubmit={onSubmit} register={register} errors={errors} />
+				<RegisterForm onSubmit={onSubmit} errors={errors} ref={formReference} />
 				<LineDivider />
 				<SocialIconBox />
 				<div className="mb-0 mt-4 flex justify-center font-primaryMedium">
@@ -23,7 +21,7 @@ export const RegisterPageTemplate = ({ onSubmit, register, errors }: RegisterFor
 						login
 					</Link>
 				</div>
-			</AuthWrapper>
-		</AuthBackground>
+			</section>
+		</div>
 	);
 };

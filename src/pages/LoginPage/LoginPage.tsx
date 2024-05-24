@@ -1,10 +1,14 @@
 import { RefObject, useRef, useState } from "react";
+
 import { LoginPageTemplate } from "@/components/templates/LoginPageTemplate";
 
-import { schema } from "@/pages/authSchema";
-import { InputRef } from "@/utils/shared.types";
+import { loginSchema } from "./loginSchema";
 
 // import { FormDataType } from "@/utils/shared.types";
+export interface InputRef {
+	getValue: () => string | undefined;
+	reset: () => void;
+}
 
 export type LoginFormType = {
 	onSubmit: React.FormEventHandler;
@@ -40,7 +44,7 @@ function LoginPage() {
 			toSave: saveCheckboxRef.current?.getValue(),
 		};
 
-		const result = schema.safeParse(formData);
+		const result = loginSchema.safeParse(formData);
 
 		if (!result.success) {
 			return result.error.issues.map(({ path, message }) => {
