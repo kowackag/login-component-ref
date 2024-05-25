@@ -1,17 +1,14 @@
 import { ErrorMessage } from "@/components/atoms/Error";
-import { FormFieldTypes, InputRef } from "@/utils/shared.types";
+import { FormFieldTypes } from "@/utils/shared.types";
 import { forwardRef, useImperativeHandle, useRef } from "react";
 
+export interface InputRef {
+	getValue: () => string | undefined;
+	reset: () => void;
+}
+
 export const InputField = forwardRef<InputRef, FormFieldTypes>(
-	(
-		{
-			name,
-			label,
-			type = "text",
-			error,
-		},
-		ref,
-	) => {
+	({ name, label, type = "text", error }, ref) => {
 		const valueRef = useRef<HTMLInputElement>(null);
 
 		useImperativeHandle(

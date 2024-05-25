@@ -20,7 +20,6 @@ function RegisterPage() {
 	const noErrorsState = {
 		email: "",
 		password: "",
-		toSave: "",
 	};
 	const [errors, setErrors] = useState(noErrorsState);
 	const registerFormReference = useRef<FormRef>(null);

@@ -1,10 +1,8 @@
 import { RefObject, useRef, useState } from "react";
-
 import { LoginPageTemplate } from "@/components/templates/LoginPageTemplate";
-
 import { loginSchema } from "./loginSchema";
+import { FormRef } from "@/components/organisms/LoginForm";
 
-// import { FormDataType } from "@/utils/shared.types";
 export interface InputRef {
 	getValue: () => string | undefined;
 	reset: () => void;
@@ -17,32 +15,26 @@ export type LoginFormType = {
 		password: string;
 		toSave: string;
 	};
-	emailInputRef: RefObject<InputRef>;
-	passwordInputRef: RefObject<InputRef>;
-	saveCheckboxRef: RefObject<InputRef>;
+	formReference: RefObject<FormRef>;
 };
 
 function LoginPage() {
-	const [errors, setErrors] = useState({
+	const noErrorsState = {
 		email: "",
 		password: "",
 		toSave: "",
-	});
-	const emailInputRef = useRef<InputRef>(null);
-	const passwordInputRef = useRef<InputRef>(null);
-	const saveCheckboxRef = useRef<InputRef>(null);
-
+	};
+	const [errors, setErrors] = useState(noErrorsState);
+	const loginFormReference = useRef<FormRef>(null);
 	const onSubmit = () => {
 		setErrors({
 			email: "",
 			password: "",
 			toSave: "",
 		});
-		const formData = {
-			email: emailInputRef.current?.getValue(),
-			password: passwordInputRef.current?.getValue(),
-			toSave: saveCheckboxRef.current?.getValue(),
-		};
+		const formData = loginFormReference.current?.getFormData();
+
+		console.log(formData);
 
 		const result = loginSchema.safeParse(formData);
 
@@ -55,21 +47,14 @@ function LoginPage() {
 			});
 		}
 		console.log(formData);
-		emailInputRef.current?.reset();
-		passwordInputRef.current?.reset();
-		setErrors(() => ({
-			email: "",
-			password: "",
-			toSave: "",
-		}));
+		loginFormReference.current?.resetForm();
+		setErrors(noErrorsState);
 	};
 
 	return (
 		<LoginPageTemplate
 			onSubmit={onSubmit}
-			emailInputRef={emailInputRef}
-			passwordInputRef={passwordInputRef}
-			saveCheckboxRef={saveCheckboxRef}
+			formReference={loginFormReference}
 			errors={errors}
 		/>
 	);

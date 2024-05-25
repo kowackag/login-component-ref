@@ -1,9 +1,7 @@
-import { RefObject, forwardRef, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle, useRef } from "react";
 
-import { InputField } from "@/components/molecules/InputField";
+import { InputField, InputRef } from "@/components/molecules/InputField";
 import { Button } from "@/components/atoms/Button";
-
-import { InputRef } from "@/utils/shared.types";
 
 export interface FormRef {
 	getFormData: () => {
@@ -19,7 +17,6 @@ export type RegisterFormType = {
 		email: string;
 		password: string;
 	};
-	ref: RefObject<FormRef>;
 };
 
 export const RegisterForm = forwardRef(({ onSubmit, errors }: RegisterFormType, ref) => {
