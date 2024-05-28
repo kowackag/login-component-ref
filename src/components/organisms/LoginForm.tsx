@@ -4,9 +4,6 @@ import { InputField, InputRef } from "@/components/molecules/InputField";
 import { Checkbox } from "@/components/molecules/Checkbox";
 import { Button } from "@/components/atoms/Button";
 
-// emailInputRef: RefObject<InputRef>;
-// passwordInputRef: RefObject<InputRef>;
-// saveCheckboxRef: RefObject<InputRef>;
 export type LoginFormType = {
 	onSubmit: React.FormEventHandler;
 	errors?: {

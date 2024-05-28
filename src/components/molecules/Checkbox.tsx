@@ -1,10 +1,9 @@
-import { Ref, forwardRef, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle, useRef } from "react";
 import { ErrorMessage } from "@/components/atoms/Error";
 
 export type CheckboxFieldTypes = {
 	name: string;
 	label: string;
-	ref: Ref<HTMLInputElement>;
 	error?: string;
 };
 
