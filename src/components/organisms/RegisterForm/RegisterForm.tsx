@@ -1,31 +1,27 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
 
-import { InputField, InputRef } from "@/components/molecules/InputField";
-import { Checkbox } from "@/components/molecules/Checkbox";
-import { Button } from "@/components/atoms/Button";
-
-export type LoginFormType = {
-	onSubmit: React.FormEventHandler;
-	errors?: {
-		email: string;
-		password: string;
-		toSave: string;
-	};
-};
+import { InputField, InputRef } from "@/components/molecules/InputField/InputField";
+import { Button } from "@/components/atoms/Button/Button";
 
 export interface FormRef {
 	getFormData: () => {
 		email: string;
 		password: string;
-		toSave: boolean;
 	};
 	resetForm: () => void;
 }
 
-export const LoginForm = forwardRef(({ onSubmit, errors }: LoginFormType, ref) => {
+export type RegisterFormType = {
+	onSubmit: React.FormEventHandler;
+	errors?: {
+		email: string;
+		password: string;
+	};
+};
+
+export const RegisterForm = forwardRef(({ onSubmit, errors }: RegisterFormType, ref) => {
 	const emailInputRef = useRef<InputRef>(null);
 	const passwordInputRef = useRef<InputRef>(null);
-	const saveCheckboxRef = useRef<InputRef>(null);
 
 	useImperativeHandle(
 		ref,
@@ -33,9 +29,9 @@ export const LoginForm = forwardRef(({ onSubmit, errors }: LoginFormType, ref) =
 			getFormData: () => ({
 				email: emailInputRef.current?.getValue(),
 				password: passwordInputRef.current?.getValue(),
-				toSavae: saveCheckboxRef.current?.getValue(),
 			}),
 			resetForm: () => {
+				console.log(1)
 				emailInputRef.current?.reset();
 				passwordInputRef.current?.reset();
 			},
@@ -53,8 +49,7 @@ export const LoginForm = forwardRef(({ onSubmit, errors }: LoginFormType, ref) =
 				ref={passwordInputRef}
 				error={errors?.password}
 			/>
-			<Checkbox name="toSave" label="Remember me?" ref={saveCheckboxRef} />
-			<Button handleButton={onSubmit} text="Login" type="submit" />
+			<Button handleButton={onSubmit} text="Sign up" type="submit" />
 		</div>
 	);
 });

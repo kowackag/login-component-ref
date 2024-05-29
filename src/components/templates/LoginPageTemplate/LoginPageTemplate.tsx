@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import { LoginForm } from "@/components/organisms/LoginForm";
-import { SocialIconBox } from "@/components/molecules/SocialIconBox";
-import { LineDivider } from "@/components/molecules/LineDivider";
-import { Title } from "@/components/atoms/Title";
+import { LoginForm } from "@/components/organisms/LoginForm/LoginForm";
+import { SocialIconBox } from "@/components/molecules/SocialIconBox/SocialIconBox";
+import { LineDivider } from "@/components/molecules/LineDivider/LineDivider";
+import { Title } from "@/components/atoms/Title/Title";
 
 import { LoginFormType } from "@/pages/LoginPage/LoginPage";
 

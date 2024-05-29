@@ -1,7 +1,7 @@
 import { RefObject, useRef, useState } from "react";
-import { LoginPageTemplate } from "@/components/templates/LoginPageTemplate";
+import { LoginPageTemplate } from "@/components/templates/LoginPageTemplate/LoginPageTemplate";
 import { loginSchema } from "./loginSchema";
-import { FormRef } from "@/components/organisms/LoginForm";
+import { FormRef } from "@/components/organisms/LoginForm/LoginForm";
 
 export interface InputRef {
 	getValue: () => string | undefined;
@@ -27,11 +27,7 @@ function LoginPage() {
 	const [errors, setErrors] = useState(noErrorsState);
 	const loginFormReference = useRef<FormRef>(null);
 	const onSubmit = () => {
-		setErrors({
-			email: "",
-			password: "",
-			toSave: "",
-		});
+		setErrors(noErrorsState);
 		const formData = loginFormReference.current?.getFormData();
 
 		console.log(formData);
@@ -46,17 +42,14 @@ function LoginPage() {
 				}));
 			});
 		}
-		console.log(formData);
+
+		console.log(result);
 		loginFormReference.current?.resetForm();
 		setErrors(noErrorsState);
 	};
 
 	return (
-		<LoginPageTemplate
-			onSubmit={onSubmit}
-			formReference={loginFormReference}
-			errors={errors}
-		/>
+		<LoginPageTemplate onSubmit={onSubmit} formReference={loginFormReference} errors={errors} />
 	);
 }
 

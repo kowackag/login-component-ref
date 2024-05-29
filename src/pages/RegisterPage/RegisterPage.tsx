@@ -1,7 +1,7 @@
 import { RefObject, useRef, useState } from "react";
-import { RegisterPageTemplate } from "@/components/templates/RegisterPageTemplate";
+import { RegisterPageTemplate } from "@/components/templates/RegisterPageTemplate/RegisterPageTemplate";
 import { registerShema } from "./registerSchema";
-import { FormRef } from "@/components/organisms/RegisterForm";
+import { FormRef } from "@/components/organisms/RegisterForm/RegisterForm";
 
 export type RegisterFieldsTypes = {
 	email: string;

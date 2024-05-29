@@ -1,5 +1,5 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
-import { ErrorMessage } from "@/components/atoms/Error";
+import { ErrorMessage } from "@/components/atoms/Error/Error";
 
 export type CheckboxFieldTypes = {
 	name: string;
